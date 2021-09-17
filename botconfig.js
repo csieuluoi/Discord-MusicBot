@@ -1,4 +1,4 @@
-int PORT = process.env.PORT;
+var PORT = process.env.PORT;
 module.exports = {
   Admins: ["csieuluoi", "csieuluoi"], //Admins of the bot
   ExpressServer: false,//If you wanted to make the website run or not
