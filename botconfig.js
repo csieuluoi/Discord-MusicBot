@@ -1,4 +1,4 @@
-var PORT = process.env.PORT;
+var p= process.env.PORT;
 module.exports = {
   Admins: ["csieuluoi", "csieuluoi"], //Admins of the bot
   ExpressServer: false,//If you wanted to make the website run or not
@@ -21,7 +21,7 @@ module.exports = {
    Lavalink: {
     id: "Main",
     host: "0.0.0.0",
-    port: PORT,
+    port: p,
     pass: "youshallnotpass", 
     secure: false, // Set this to true if you're self-hosting lavalink on replit.
   },
