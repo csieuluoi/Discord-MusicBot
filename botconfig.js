@@ -1,4 +1,5 @@
-var p= process.env.PORT;
+var p= parseInt(process.env.PORT);
+console.log("port number is: ", p);
 module.exports = {
   Admins: ["csieuluoi", "csieuluoi"], //Admins of the bot
   ExpressServer: false,//If you wanted to make the website run or not
