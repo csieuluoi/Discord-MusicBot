@@ -1,9 +1,10 @@
+var p = parseInt(process.env.PORT);
 
 module.exports = {
   Admins: ["csieuluoi", "csieuluoi"], //Admins of the bot
   ExpressServer: true,//If you wanted to make the website run or not
   DefaultPrefix: process.env.Prefix || ">", //Default prefix, Server Admins can change the prefix
-  Port: 3000, //Which port website gonna be hosted
+  Port: p, //Which port website gonna be hosted
   SupportServer: "https://discord.gg/sbySMS7m3v", //Support Server Link
   Token: process.env.Token || "", //Discord Bot Token
   ClientID: process.env.Discord_ClientID || "", //Discord Client ID
