@@ -1,7 +1,7 @@
 var p = parseInt(process.env.PORT);
 
 module.exports = {
-  //Admins: ["csieuluoi", "csieuluoi"], //Admins of the bot
+  Admins: ["csieuluoi", "csieuluoi"], //Admins of the bot
   ExpressServer: true,//If you wanted to make the website run or not
   DefaultPrefix: process.env.Prefix || ">", //Default prefix, Server Admins can change the prefix
   Port: p, //Which port website gonna be hosted
