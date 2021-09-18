@@ -1,5 +1,4 @@
-var p= parseInt(process.env.PORT);
-console.log("port number is: ", p);
+
 module.exports = {
   Admins: ["csieuluoi", "csieuluoi"], //Admins of the bot
   ExpressServer: false,//If you wanted to make the website run or not
@@ -21,10 +20,10 @@ module.exports = {
   //Lavalink
    Lavalink: {
     id: "Main",
-    host: "http://localhost",
-    port: p,
-    pass: "youshallnotpass", 
-    secure: false, // Set this to true if you're self-hosting lavalink on replit.
+    host: "lava.link",
+    port: 80,
+    pass: "anything as a password", 
+    secure: true, // Set this to true if you're self-hosting lavalink on replit.
   },
 
 
