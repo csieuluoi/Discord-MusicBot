@@ -162,7 +162,7 @@ module.exports = {
                             SongAddedEmbed.setDescription(`[${Searched.tracks[0].info.title}](${Searched.tracks[0].info.uri})`);
                             SongAddedEmbed.addField("Author", Searched.tracks[0].info.author, true);
                             if (player.queue.totalSize > 1) SongAddedEmbed.addField("Position in queue", `${player.queue.size - 0}`, true);
-                            return interaction.send(SongAddedEmbed, delete_after = 30);
+                            return interaction.send(SongAddedEmbed).then(msg => msg.delete({timeout: 30000}));
 
                     case "SEARCH_RESULT":
                         player.queue.add(TrackUtils.build(Searched.tracks[0], member.user));
@@ -173,7 +173,7 @@ module.exports = {
                             SongAdded.setDescription(`[${Searched.tracks[0].info.title}](${Searched.tracks[0].info.uri})`);
                             SongAdded.addField("Author", Searched.tracks[0].info.author, true);
                             if (player.queue.totalSize > 1) SongAdded.addField("Position in queue", `${player.queue.size - 0}`, true);
-                            return interaction.send(SongAdded, delete_after = 30);
+                            return interaction.send(SongAdded).then(msg => msg.delete({timeout: 30000}));
 
 
                     case "PLAYLIST_LOADED":
@@ -185,7 +185,7 @@ module.exports = {
                         Playlist.setAuthor(`Playlist added to queue`, client.botconfig.IconURL);
                         Playlist.setDescription(`[${Searched.playlistInfo.name}](${interaction.data.options[0].value})`);
                         Playlist.addField("Enqueued", `\`${Searched.tracks.length}\` songs`, false);
-                        return interaction.send(Playlist, delete_after = 30);
+                        return interaction.send(Playlist).then(msg => msg.delete({timeout: 30000}));
                 }
             } else {
                 try {
@@ -212,7 +212,7 @@ module.exports = {
                             SongAddedEmbed.addField("Author", res.tracks[0].author, true);
                             SongAddedEmbed.addField("Duration", `\`${prettyMilliseconds(res.tracks[0].duration, { colonNotation: true })}\``, true);
                             if (player.queue.totalSize > 1) SongAddedEmbed.addField("Position in queue", `${player.queue.size - 0}`, true);
-                            return interaction.send(SongAddedEmbed, delete_after = 30);
+                            return interaction.send(SongAddedEmbed).then(msg => msg.delete({timeout: 30000}));
                             
                     case "PLAYLIST_LOADED":
                         player.queue.add(res.tracks);
@@ -223,7 +223,7 @@ module.exports = {
                         SongAdded.setDescription(`[${res.playlist.name}](${interaction.data.options[0].value})`);
                         SongAdded.addField("Enqueued", `\`${res.tracks.length}\` songs`, false);
                         SongAdded.addField("Playlist duration", `\`${prettyMilliseconds(res.playlist.duration, { colonNotation: true })}\``, false);
-                        return interaction.send(SongAdded, delete_after = 30);
+                        return interaction.send(SongAdded).then(msg => msg.delete({timeout: 30000}));
                     case "SEARCH_RESULT":
                         const track = res.tracks[0];
                         player.queue.add(track);
@@ -239,7 +239,7 @@ module.exports = {
                             SongAddedEmbed.addField("Duration", `\`${prettyMilliseconds(track.duration, { colonNotation: true })}\``, true);
                             if (player.queue.totalSize > 1) SongAddedEmbed.addField("Position in queue", `${player.queue.size - 0}`, true);
                             player.play();
-                            return interaction.send(SongAddedEmbed, delete_after = 30);
+                            return interaction.send(SongAddedEmbed).then(msg => msg.delete({timeout: 30000}));
                             
                         } else {
                             let SongAddedEmbed = new MessageEmbed();
@@ -250,7 +250,7 @@ module.exports = {
                             SongAddedEmbed.addField("Author", track.author, true);
                             SongAddedEmbed.addField("Duration", `\`${prettyMilliseconds(track.duration, { colonNotation: true })}\``, true);
                             if (player.queue.totalSize > 1) SongAddedEmbed.addField("Position in queue", `${player.queue.size - 0}`, true);
-                            interaction.send(SongAddedEmbed, delete_after = 30);
+                            interaction.send(SongAddedEmbed).then(msg => msg.delete({timeout: 30000}));
                         }
                 }
             }
