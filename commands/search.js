@@ -131,7 +131,7 @@ module.exports = {
           `${player.queue.size - 0}`,
           true
         );
-      message.channel.send(SongAddedEmbed);
+      message.channel.send(SongAddedEmbed).then(msg => msg.delete({timeout: 10000}));
     }
   },
 
@@ -331,7 +331,7 @@ module.exports = {
                 true
               );
               if (player.queue.totalSize > 1) SongAddedEmbed.addField("Position in queue", `${player.queue.size - 0}`, true);
-              awaitchannel.send(SongAddedEmbed);
+              awaitchannel.send(SongAddedEmbed).then(msg => msg.delete({timeout: 10000}));
             }
         }
       }
