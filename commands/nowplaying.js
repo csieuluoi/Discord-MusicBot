@@ -43,7 +43,7 @@ module.exports = {
         })}\``
       )
       .setThumbnail(player.queue.current.displayThumbnail());
-    return message.channel.send(QueueEmbed);
+    return message.channel.send(QueueEmbed, delete_after = 30);
   },
 
   SlashCommand: {
@@ -83,7 +83,7 @@ module.exports = {
           })}\``
         )
         .setThumbnail(player.queue.current.displayThumbnail());
-      return interaction.send(QueueEmbed);
+      return interaction.send(QueueEmbed, delete_after = 30);
     },
   },
 };
