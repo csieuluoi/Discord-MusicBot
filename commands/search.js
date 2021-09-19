@@ -206,7 +206,7 @@ module.exports = {
               player.play();
             return client.sendTime(
               interaction, `**Added to queue:** \`[${Searched.tracks[0].info.title}](${Searched.tracks[0].info.uri}}\`.`
-            );
+            ).then(msg => msg.delete({timeout: 30000}));
 
           case "PLAYLIST_LOADED":
             let songs = [];
