@@ -40,7 +40,7 @@ module.exports = {
   [✨ Support Server](${
     client.botconfig.SupportServer
   }) | [GitHub](https://github.com/SudhanPlayz/Discord-MusicBot) | By [SudhanPlayz](https://github.com/SudhanPlayz)`);
-    if (!args[0]) message.channel.send(Embed, delete_after = 30);
+    if (!args[0]) message.channel.send(Embed).then(msg => msg.delete({timeout: 30000}));
     else {
       let cmd =
         client.commands.get(args[0]) ||
@@ -121,7 +121,7 @@ SlashCommand: {
   [✨ Support Server](${
     client.botconfig.SupportServer
   }) | [GitHub](https://github.com/SudhanPlayz/Discord-MusicBot) | By [SudhanPlayz](https://github.com/SudhanPlayz)`);
-      if (!args) return interaction.send(Embed, delete_after = 30);
+      if (!args) return interaction.send(Embed).then(msg => msg.delete({timeout: 30000}));
       else {
         let cmd =
           client.commands.get(args[0].value) ||
@@ -156,7 +156,7 @@ SlashCommand: {
             }`
           );
   
-        interaction.send(embed, delete_after = 30);
+        interaction.send(embed).then(msg => msg.delete({timeout: 30000}));;
       }
   },
 }};
