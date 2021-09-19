@@ -170,7 +170,7 @@ class DiscordMusicBot extends Client {
         //.setFooter("Started playing at");
         let NowPlaying = await client.channels.cache
           .get(player.textChannel)
-          .send(TrackStartedEmbed);
+          .send(TrackStartedEmbed, delete_after=30);
         player.setNowplayingMessage(NowPlaying);
       })
       .on("queueEnd", (player) => {
@@ -178,7 +178,7 @@ class DiscordMusicBot extends Client {
           .setAuthor("The queue has ended", this.botconfig.IconURL)
           .setColor("RANDOM")
           .setTimestamp();
-        client.channels.cache.get(player.textChannel).send(QueueEmbed);
+        client.channels.cache.get(player.textChannel).send(QueueEmbed, delete_after=30);
         if (!this.botconfig["24/7"]) player.destroy();
       });
   }
