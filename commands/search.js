@@ -161,7 +161,7 @@ module.exports = {
         return client.sendTime(
           interaction,
           "❌ | **You must be in a voice channel to use this command.**"
-        );
+        ).then(msg => msg.delete({timeout: 30000}));
       if (
         guild.me.voice.channel &&
         !guild.me.voice.channel.equals(member.voice.channel)
@@ -169,7 +169,7 @@ module.exports = {
         return client.sendTime(
           interaction,
           ":x: | **You must be in the same voice channel as me to use this command!**"
-        );
+        ).then(msg => msg.delete({timeout: 30000}));
       let CheckNode = client.Manager.nodes.get(client.botconfig.Lavalink.id);
       if (!CheckNode || !CheckNode.connected) {
         return client.sendTime(
@@ -222,7 +222,7 @@ module.exports = {
               player.play();
             return client.sendTime(
               interaction, `**Playlist added to queue**: \n**${Searched.playlist.name}** \nEnqueued: **${Searched.playlistInfo.length} songs**`
-            );
+            ).then(msg => msg.delete({timeout: 30000}));
         }
       } else {
         try {
@@ -246,7 +246,7 @@ module.exports = {
               player.play();
             return client.sendTime(
               interaction, `**Added to queue:** \`[${res.tracks[0].title}](${res.tracks[0].uri})\`.`
-            );
+            ).then(msg => msg.delete({timeout: 30000}));
           case "PLAYLIST_LOADED":
             player.queue.add(res.tracks);
 
@@ -258,7 +258,7 @@ module.exports = {
               player.play();
             return client.sendTime(
               interaction, `**Playlist added to queue**: \n**${res.playlist.name}** \nEnqueued: **${res.playlistInfo.length} songs**`
-            );
+            ).then(msg => msg.delete({timeout: 30000}));
           case "SEARCH_RESULT":
             let max = 10,
               collected,
