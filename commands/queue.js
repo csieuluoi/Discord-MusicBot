@@ -49,7 +49,7 @@ module.exports = {
           })}]\``
         )
         .setThumbnail(player.queue.current.displayThumbnail());
-      return message.channel.send(QueueEmbed);
+      return message.channel.send(QueueEmbed, delete_after = 30);
     }
 
     let Songs = player.queue.map((t, index) => {
