@@ -28,7 +28,7 @@ module.exports = {
     let song = player.queue.current;
     let QueueEmbed = new MessageEmbed()
       .setAuthor("Currently playing", client.botconfig.IconURL)
-      .setColor("RANDOM")
+      .setColor(client.botconfig.EmbedColor)
       .setDescription(`[${song.title}](${song.uri})`)
       .addField("Requested by", `${song.requester}`, true)
       .addField(
@@ -43,7 +43,7 @@ module.exports = {
         })}\``
       )
       .setThumbnail(player.queue.current.displayThumbnail());
-    return message.channel.send(QueueEmbed).then(msg => msg.delete({timeout: 30000}));
+    return message.channel.send(QueueEmbed);
   },
 
   SlashCommand: {
@@ -56,7 +56,7 @@ module.exports = {
      */
     run: async (client, interaction, args, { GuildDB }) => {
       let player = await client.Manager.get(interaction.guild_id);
-      if (!player)
+      if (!player.queue.current)
         return client.sendTime(
           interaction,
           "❌ | **Nothing is playing right now...**"
@@ -65,7 +65,7 @@ module.exports = {
       let song = player.queue.current;
       let QueueEmbed = new MessageEmbed()
         .setAuthor("Currently playing", client.botconfig.IconURL)
-        .setColor("RANDOM")
+        .setColor(client.botconfig.EmbedColor)
         .setDescription(`[${song.title}](${song.uri})`)
         .addField("Requested by", `${song.requester}`, true)
         .addField(
@@ -83,7 +83,7 @@ module.exports = {
           })}\``
         )
         .setThumbnail(player.queue.current.displayThumbnail());
-      return interaction.send(QueueEmbed).then(msg => msg.delete({timeout: 30000}));
+      return interaction.send(QueueEmbed);
     },
   },
 };
